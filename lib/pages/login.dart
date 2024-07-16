@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:inversor_deportivo/pages/homePage.dart';
 import 'package:inversor_deportivo/pages/register.dart';
 
 import 'pagesurl.dart';
@@ -97,9 +98,7 @@ class LoginComponent extends StatelessWidget {
               onPressed: () => {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              EquiposPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+                      MaterialPageRoute(builder: (context) => HomePage()),
                     ),
                   },
               child: Text(
