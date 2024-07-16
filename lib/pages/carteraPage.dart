@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../components/componentsurl.dart';
 import 'pagesurl.dart';
 
 class CarteraPage extends StatelessWidget {
