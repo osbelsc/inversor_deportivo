@@ -8,5 +8,6 @@ Map<String, WidgetBuilder> getaplicationsRoutes() {
     'register': (BuildContext context) => RegisterPage(),
     'equipos': (BuildContext context) => EquiposPage(),
     'mercado': (BuildContext context) => MercadoPage(),
+    'equipo': (BuildContext context) => EquipoPage(),
   };
 }

@@ -118,7 +118,7 @@ class loginComponent extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'No tienes cuenta ?',
+          'Tienes cuenta ?',
           style: TextStyle(fontSize: 25.0),
         ),
         TextButton(

@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:inversor_deportivo/pages/homePage.dart';
 import 'package:inversor_deportivo/pages/register.dart';
 
+import '../components/button.dart';
 import 'pagesurl.dart';
 
 class LoginPage extends StatelessWidget {
@@ -41,8 +42,11 @@ class InfoComponent extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          child: Text('ID'),
-          backgroundColor: Colors.white70,
+          child: Text(
+            'ID',
+            style: TextStyle(color: Colors.white70),
+          ),
+          backgroundColor: Colors.black87,
           maxRadius: 50.0,
         ),
         Text(
@@ -94,17 +98,15 @@ class LoginComponent extends StatelessWidget {
             ),
           ),
           Gap(10),
-          TextButton(
-              onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    ),
-                  },
-              child: Text(
-                'Ingresar',
-                style: TextStyle(fontSize: 20.0),
-              ))
+          GradientButton(
+            text: 'Ingresar',
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      HomePage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+            ),
+          )
         ],
       ),
     );
@@ -122,19 +124,15 @@ class registerComponent extends StatelessWidget {
           'No tienes cuenta ?',
           style: TextStyle(fontSize: 25.0),
         ),
-        TextButton(
-            onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-                  ),
-                },
-            child: Text(
-              'Registrarse',
-              style: TextStyle(fontSize: 20.0),
-            ))
+        GradientButton(
+          text: 'Registrarse',
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+          ),
+        )
       ],
     );
   }

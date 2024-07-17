@@ -10,6 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(
+            color: const Color.fromARGB(
+                255, 255, 255, 255), // Cambia el color del ícono aquí
+          ),
+        ),
+      ),
       title: 'Material App',
       debugShowCheckedModeBanner: false,
       initialRoute: 'login',

@@ -33,6 +33,16 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
+        actions: [
+          IconButton(
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    ),
+                  },
+              icon: Icon(Icons.supervised_user_circle_rounded))
+        ],
       ),
       drawer: DrawerComponent(),
       body: _callPage(currentIndex),

@@ -9,8 +9,18 @@ class MercadoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        equipoComponent(),
-        equipoComponent(),
+        teamMarketCard(
+            text: 'Equipo',
+            subtitle: '25.00',
+            onPressed: () => {
+                  alertSaleDialog(context),
+                }),
+        teamMarketCard(
+            text: 'Equipo',
+            subtitle: '25.00',
+            onPressed: () => {
+                  alertSaleDialog(context),
+                }),
       ],
     );
   }
