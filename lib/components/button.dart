@@ -8,8 +8,8 @@ class GradientButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xff4338CA);
-    const secondaryColor = Color(0xff6D28D9);
+    const primaryColor = Color.fromARGB(255, 165, 35, 35);
+    const secondaryColor = Color.fromARGB(255, 217, 75, 40);
     const accentColor = Color(0xffffffff);
 
     const double borderRadius = 15;

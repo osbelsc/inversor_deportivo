@@ -14,6 +14,7 @@ class EquiposPage extends StatelessWidget {
         teamCard(
             text: 'Name',
             subtitle: '26.00',
+            value: '20.0',
             onPressed: () => {
                   Navigator.push(
                     context,
@@ -23,6 +24,7 @@ class EquiposPage extends StatelessWidget {
         teamCard(
             text: 'Name',
             subtitle: '26.00',
+            value: '20.0',
             onPressed: () => {
                   Navigator.push(
                     context,
@@ -32,6 +34,7 @@ class EquiposPage extends StatelessWidget {
         teamCard(
             text: 'Name',
             subtitle: '26.00',
+            value: '20.0',
             onPressed: () => {
                   Navigator.push(
                     context,

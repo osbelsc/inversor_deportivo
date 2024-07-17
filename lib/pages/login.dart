@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
-import 'package:inversor_deportivo/pages/homePage.dart';
-import 'package:inversor_deportivo/pages/register.dart';
 
 import '../components/button.dart';
 import 'pagesurl.dart';

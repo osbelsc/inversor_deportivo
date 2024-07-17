@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../components/componentsurl.dart';
 import 'pagesurl.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -99,12 +100,15 @@ class registerInputsComponents extends StatelessWidget {
           ),
         ),
         Gap(10),
-        TextButton(
-            onPressed: () => {},
-            child: Text(
-              'Registrar !',
-              style: TextStyle(fontSize: 20.0),
-            ))
+        GradientButton(
+          text: 'Registrarse',
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+          ),
+        )
       ],
     );
   }
@@ -121,19 +125,15 @@ class loginComponent extends StatelessWidget {
           'Tienes cuenta ?',
           style: TextStyle(fontSize: 25.0),
         ),
-        TextButton(
-            onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LoginPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-                  ),
-                },
-            child: Text(
-              'Ingresar',
-              style: TextStyle(fontSize: 20.0),
-            ))
+        GradientButton(
+          text: 'Ingresar',
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    LoginPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+          ),
+        )
       ],
     );
   }

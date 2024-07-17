@@ -4,12 +4,17 @@ class teamMarketCard extends StatelessWidget {
   final String text;
   // final String imageUrl;
   final String subtitle;
+  final String value;
+  final String price;
   final Function() onPressed;
 
   const teamMarketCard(
       {required this.text,
+
       // required this.imageUrl,
       required this.subtitle,
+      required this.value,
+      required this.price,
       required this.onPressed,
       Key? key})
       : super(key: key);
@@ -21,7 +26,7 @@ class teamMarketCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 75,
+          height: 85,
           padding: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -45,21 +50,44 @@ class teamMarketCard extends StatelessWidget {
                 backgroundColor: Color.fromARGB(179, 219, 56, 56),
                 maxRadius: 30.0,
               ),
-              Text(text,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  )),
+              Column(
+                children: [
+                  Text(text,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      )),
+                  Text(price,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      )),
+                ],
+              ),
               const Spacer(),
-              Text(
-                subtitle,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 12),
+              Column(
+                children: [
+                  Text(
+                    subtitle,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12),
+                  ),
+                  Text(
+                    value,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12),
+                  ),
+                ],
               ),
             ],
           ),

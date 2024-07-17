@@ -32,63 +32,61 @@ class FichaEquipo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
-        TableEquipo(),
-        Gap(10),
+        CircleAvatar(
+          child: Text('Logo'),
+          backgroundColor: Color.fromARGB(179, 219, 56, 56),
+          maxRadius: 30.0,
+        ),
+        DataTableExample(),
       ],
     );
   }
 }
 
-class TableEquipo extends StatelessWidget {
-  const TableEquipo({super.key});
+class DataTableExample extends StatelessWidget {
+  const DataTableExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        teamCard(text: 'Equipo', subtitle: '', onPressed: () => {}),
-        Table(
-          border: TableBorder.all(width: 2, color: Colors.black),
-          children: [
-            TableRow(children: [
-              TableCell(
-                // Definir ancho para la primera celda
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  width: 120, // Ancho deseado
-                  child: Text('Acciones'),
+        DataTable(
+          columns: const <DataColumn>[
+            DataColumn(
+              label: Expanded(
+                child: Text(
+                  'Acciones',
+                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
-              TableCell(
-                // Definir ancho para la segunda celda
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  width: 120, // Ancho deseado
-                  child: Text('Precio Compra'),
+            ),
+            DataColumn(
+              label: Expanded(
+                child: Text(
+                  'Precio',
+                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
-              TableCell(
-                // Definir ancho para la tercera celda
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  width: 120, // Ancho deseado
-                  child: Text('Valor Actual'),
+            ),
+            DataColumn(
+              label: Expanded(
+                child: Text(
+                  'Valor Actual',
+                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
-            ]),
-            TableRow(children: [
-              TableCell(
-                child: Text('17'),
-              ),
-              TableCell(
-                child: Text('\u0024103'),
-              ),
-              TableCell(
-                child: Text('\u0024170'),
-              ),
-            ]),
+            ),
+          ],
+          rows: const <DataRow>[
+            DataRow(
+              cells: <DataCell>[
+                DataCell(Text('14')),
+                DataCell(Text('\u0024103')),
+                DataCell(Text('\u0024102')),
+              ],
+            ),
           ],
         ),
       ],

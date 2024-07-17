@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:inversor_deportivo/pages/pagesurl.dart';
+import 'package:inversor_deportivo/pages/partidosPage.dart';
 import '../components/componentsurl.dart';
 
 class HomePage extends StatefulWidget {
@@ -91,6 +92,7 @@ _callPage(int actPage) {
       return EquiposPage();
     case 1:
       return MercadoPage();
+
     case 2:
       return CarteraPage();
     default:

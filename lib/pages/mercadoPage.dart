@@ -12,11 +12,15 @@ class MercadoPage extends StatelessWidget {
         teamMarketCard(
             text: 'Equipo',
             subtitle: '25.00',
+            value: '\u002428.00',
+            price: '\u002416.00',
             onPressed: () => {
                   alertSaleDialog(context),
                 }),
         teamMarketCard(
             text: 'Equipo',
+            value: '\u002428.00',
+            price: '\u002416.00',
             subtitle: '25.00',
             onPressed: () => {
                   alertSaleDialog(context),

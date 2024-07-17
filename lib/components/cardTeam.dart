@@ -4,12 +4,14 @@ class teamCard extends StatelessWidget {
   final String text;
   // final String imageUrl;
   final String subtitle;
+  final String value;
   final Function() onPressed;
 
   const teamCard(
       {required this.text,
       // required this.imageUrl,
       required this.subtitle,
+      required this.value,
       required this.onPressed,
       Key? key})
       : super(key: key);
@@ -21,7 +23,7 @@ class teamCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 75,
+          height: 85,
           padding: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -53,13 +55,25 @@ class teamCard extends StatelessWidget {
                     fontSize: 18,
                   )),
               const Spacer(),
-              Text(
-                subtitle,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 12),
+              Column(
+                children: [
+                  Text(
+                    subtitle,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12),
+                  ),
+                  Text(
+                    value,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12),
+                  ),
+                ],
               ),
             ],
           ),
