@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   gap: ^3.0.1
   syncfusion_flutter_charts: ^26.1.42
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+
+  flutter_launcher_icons:
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/Id.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

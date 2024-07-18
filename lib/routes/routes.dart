@@ -10,5 +10,9 @@ Map<String, WidgetBuilder> getaplicationsRoutes() {
     'mercado': (BuildContext context) => MercadoPage(),
     'equipo': (BuildContext context) => EquipoPage(),
     'partidos': (BuildContext context) => PartidosPage(),
+    'cartera': (BuildContext context) => CarteraPage(),
+    'ranking': (BuildContext context) => RankingPage(),
+    'tablaP': (BuildContext context) => TablaPosicionesPage(),
+    'finanzas': (BuildContext context) => FinanzasPage(),
   };
 }

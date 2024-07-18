@@ -6,3 +6,6 @@ export 'package:inversor_deportivo/pages/carteraPage.dart';
 export 'package:inversor_deportivo/pages/equipoPage.dart';
 export 'package:inversor_deportivo/pages/HomePage.dart';
 export 'package:inversor_deportivo/pages/partidosPage.dart';
+export 'package:inversor_deportivo/pages/tablaPosiciones.dart';
+export 'package:inversor_deportivo/pages/finanzasPage.dart';
+export 'package:inversor_deportivo/pages/rankingPage.dart';

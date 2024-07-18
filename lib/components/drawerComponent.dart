@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:inversor_deportivo/pages/partidosPage.dart';
+
+import 'package:inversor_deportivo/pages/pagesurl.dart';
 
 class DrawerComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Color.fromARGB(255, 26, 25, 32),
+        color: Color(0xff4338CA),
         child: ListView(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.all(15.0),
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  CircleAvatar(
-                    child: Text('ID'),
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                    maxRadius: 30.0,
-                  ),
+                  SearchFieldDrawer(),
                   const SizedBox(height: 12),
                   MenuItem(
                     text: 'Cartera',
@@ -27,7 +25,7 @@ class DrawerComponent extends StatelessWidget {
                   const SizedBox(height: 5),
                   MenuItem(
                     text: 'Mercado',
-                    icon: Icons.shop_rounded,
+                    icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 1),
                   ),
                   const SizedBox(height: 5),
@@ -38,26 +36,26 @@ class DrawerComponent extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   MenuItem(
-                    text: 'Equipo',
-                    icon: Icons.people,
+                    text: 'Equipos',
+                    icon: Icons.update,
                     onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 8),
                   Divider(color: Colors.white70),
                   const SizedBox(height: 8),
                   MenuItem(
-                    text: 'Partidos',
-                    icon: Icons.gamepad_rounded,
-                    onClicked: () => selectedItem(context, 4),
-                  ),
-                  MenuItem(
-                    text: 'Finanzas',
-                    icon: Icons.monetization_on,
+                    text: 'Facturas',
+                    icon: Icons.notifications_outlined,
                     onClicked: () => selectedItem(context, 5),
                   ),
                   MenuItem(
-                    text: 'Tabla de Posiciones',
-                    icon: Icons.table_rows,
+                    text: 'Tabla de posiciones',
+                    icon: Icons.settings,
+                    onClicked: () => selectedItem(context, 6),
+                  ),
+                  MenuItem(
+                    text: 'Finanzas',
+                    icon: Icons.settings,
                     onClicked: () => selectedItem(context, 6),
                   ),
                 ],
@@ -73,15 +71,66 @@ class DrawerComponent extends StatelessWidget {
     Navigator.of(context).pop();
     switch (index) {
       case 0:
-        Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) =>
-                  PartidosPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-        );
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: CarteraPage(),
+          ), // Page 1
+        ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Scaffold(), // Page 2
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 2:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 6:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 7:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: TablaPosicionesPage(),
+          ), // Page 2
+        ));
+        break;
+      case 7:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(
+            child: FinanzasPage(),
+          ), // Page 2
         ));
         break;
     }
@@ -110,6 +159,39 @@ class MenuItem extends StatelessWidget {
       title: Text(text, style: TextStyle(color: color)),
       hoverColor: hoverColor,
       onTap: onClicked,
+    );
+  }
+}
+
+class SearchFieldDrawer extends StatelessWidget {
+  const SearchFieldDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Colors.white;
+
+    return TextField(
+      style: TextStyle(color: color, fontSize: 14),
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        hintText: 'Search',
+        hintStyle: TextStyle(color: color),
+        prefixIcon: Icon(
+          Icons.search,
+          color: color,
+          size: 20,
+        ),
+        filled: true,
+        fillColor: Colors.white12,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: color.withOpacity(0.7)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: color.withOpacity(0.7)),
+        ),
+      ),
     );
   }
 }

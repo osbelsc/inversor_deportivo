@@ -101,8 +101,9 @@ class LoginComponent extends StatelessWidget {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      HomePage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+                  builder: (context) => HomePage(
+                      child:
+                          EquiposPage())), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
             ),
           )
         ],
