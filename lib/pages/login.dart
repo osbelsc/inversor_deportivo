@@ -85,6 +85,7 @@ class LoginComponent extends StatelessWidget {
           Container(
             width: 350, // Aquí puedes definir el ancho deseado
             child: TextField(
+              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   gapPadding: 20.0,
