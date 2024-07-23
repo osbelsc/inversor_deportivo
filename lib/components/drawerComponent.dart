@@ -7,7 +7,7 @@ class DrawerComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Color(0xff4338CA),
+        color: Color.fromARGB(223, 0, 0, 0),
         child: ListView(
           children: <Widget>[
             Container(
@@ -15,7 +15,11 @@ class DrawerComponent extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  SearchFieldDrawer(),
+                  CircleAvatar(
+                    child: Text('Logo'),
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    maxRadius: 30.0,
+                  ),
                   const SizedBox(height: 12),
                   MenuItem(
                     text: 'Cartera',
@@ -71,11 +75,7 @@ class DrawerComponent extends StatelessWidget {
     Navigator.of(context).pop();
     switch (index) {
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: CarteraPage(),
-          ), // Page 1
-        ));
+        Navigator.pushNamed(context, 'cartera');
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(

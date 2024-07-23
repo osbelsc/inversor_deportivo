@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../pages/pagesurl.dart';
+import 'componentsurl.dart';
+
 void alertSaleDialog(BuildContext context) {
   showDialog(
     context: context,
@@ -17,16 +20,26 @@ void alertSaleDialog(BuildContext context) {
             ],
           ),
           actions: [
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("Comprar")),
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("Cancelar"))
+            GradientButton(
+              text: 'Ingresar',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomePage(
+                        child:
+                            EquiposPage())), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+              ),
+            ),
+            GradientButton(
+              text: 'Ingresar',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomePage(
+                        child:
+                            EquiposPage())), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+              ),
+            )
           ],
         ),
       );
