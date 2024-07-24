@@ -9,20 +9,24 @@ class CarteraPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Cartera',
-            style: TextStyle(
-              fontSize: 40.0,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: ListView(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Cartera',
+              style: TextStyle(
+                fontSize: 40.0,
+              ),
             ),
           ),
-        ),
-        FichaEquipo(),
-        FichaEquipo()
-      ],
+          FichaEquipo(),
+          Gap(10),
+          FichaEquipo()
+        ],
+      ),
     );
   }
 }
@@ -32,15 +36,30 @@ class FichaEquipo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          child: Text('Logo'),
-          backgroundColor: Color.fromARGB(179, 219, 56, 56),
-          maxRadius: 30.0,
-        ),
-        DataTableExample(),
-      ],
+    return Container(
+      height: 135,
+      padding: const EdgeInsets.all(3.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.5),
+        boxShadow: [
+          BoxShadow(
+              offset: const Offset(10, 20),
+              blurRadius: 10,
+              spreadRadius: 0,
+              color: Colors.grey.withOpacity(.05)),
+        ],
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            child: Text('Logo'),
+            backgroundColor: Color.fromARGB(179, 219, 56, 56),
+            maxRadius: 30.0,
+          ),
+          DataTableExample(),
+        ],
+      ),
     );
   }
 }

@@ -19,11 +19,11 @@ class LoginPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              InfoComponent(),
+              TitleComponent(),
               Gap(20),
               LoginComponent(),
               Gap(20),
-              registerComponent(),
+              RegisterComponent(),
             ],
           ),
         ),
@@ -32,8 +32,8 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class InfoComponent extends StatelessWidget {
-  const InfoComponent({super.key});
+class TitleComponent extends StatelessWidget {
+  const TitleComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -113,8 +113,8 @@ class LoginComponent extends StatelessWidget {
   }
 }
 
-class registerComponent extends StatelessWidget {
-  const registerComponent({super.key});
+class RegisterComponent extends StatelessWidget {
+  const RegisterComponent({super.key});
 
   @override
   Widget build(BuildContext context) {

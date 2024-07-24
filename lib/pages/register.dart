@@ -19,11 +19,11 @@ class RegisterPage extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                InfoComponent(),
+                TitleComponent(),
                 Gap(20),
                 registerInputsComponents(),
                 Gap(20),
-                loginComponent(),
+                LoginRComponent(),
               ],
             ),
           ),
@@ -114,8 +114,8 @@ class registerInputsComponents extends StatelessWidget {
   }
 }
 
-class loginComponent extends StatelessWidget {
-  const loginComponent({super.key});
+class LoginRComponent extends StatelessWidget {
+  const LoginRComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
