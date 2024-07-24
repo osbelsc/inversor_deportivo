@@ -4,7 +4,7 @@ export 'package:inversor_deportivo/pages/mercadoPage.dart';
 export 'package:inversor_deportivo/pages/register.dart';
 export 'package:inversor_deportivo/pages/carteraPage.dart';
 export 'package:inversor_deportivo/pages/equipoPage.dart';
-export 'package:inversor_deportivo/pages/HomePage.dart';
+export 'package:inversor_deportivo/pages/homePage.dart';
 export 'package:inversor_deportivo/pages/partidosPage.dart';
 export 'package:inversor_deportivo/pages/tablaPosiciones.dart';
 export 'package:inversor_deportivo/pages/finanzasPage.dart';

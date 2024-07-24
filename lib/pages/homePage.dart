@@ -1,47 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:inversor_deportivo/pages/pagesurl.dart'; // Asegúrate de que las páginas estén bien importadas
-import '../components/componentsurl.dart'; // Asegúrate de que el DrawerComponent esté bien importado
+
+import 'pagesurl.dart';
 
 class HomePage extends StatefulWidget {
-  final Widget child;
-
-  const HomePage({required this.child, Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+  int bottomNavIndex = 0; // Índice para el BottomNavigationBar
+  int drawerIndex = -1;
 
-  void _navigateToPage(int index) {
-    setState(() {
-      currentIndex = index; // Actualiza el índice de la página actual
-    });
-    Navigator.pop(context); // Cierra el Drawer
+  Widget _getBottomNavPage(int index) {
+    switch (index) {
+      case 0:
+        return EquiposPage();
+      case 1:
+        return MercadoPage();
+      case 2:
+        return CarteraPage();
+      default:
+        return Container();
+    }
+  }
+
+  // Función para obtener la página correcta según el índice de Drawer
+  Widget _getDrawerPage(int index) {
+    switch (index) {
+      case 0:
+        return CarteraPage(); // Ejemplo de página
+      case 1:
+        return MercadoPage(); // Ejemplo de página
+      case 2:
+        return RankingPage();
+      case 3:
+        return EquiposPage();
+      case 4:
+        return TablaPosicionesPage();
+      case 5:
+        return FinanzasPage(); // Ejemplo de página
+      default:
+        return Container();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    // Decide qué mostrar como body
+    Widget body = drawerIndex == -1
+        ? _getBottomNavPage(bottomNavIndex)
+        : _getDrawerPage(drawerIndex);
+
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Inversor Deportivo',
-          style: TextStyle(color: Colors.white70),
-        ),
         backgroundColor: Colors.black87,
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              color: Colors.white70,
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
         actions: [
           IconButton(
             onPressed: () => Navigator.push(
@@ -51,12 +65,14 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.supervised_user_circle_rounded),
           )
         ],
+        centerTitle: true,
+        title: Text('Inversor deportivo',
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
       ),
+
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            // Header del Drawer (opcional)
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.black87,
@@ -71,34 +87,85 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.group),
-              title: Text('Equipo'),
-              onTap: () => _navigateToPage(0), // Navega a la página de Equipos
+              title: Text('Cartera'),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      0; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
             ),
             ListTile(
               leading: Icon(Icons.shopping_cart_rounded),
               title: Text('Mercado'),
-              onTap: () => _navigateToPage(1), // Navega a la página de Mercado
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      1; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
             ),
             ListTile(
               leading: Icon(Icons.business_center_sharp),
-              title: Text('Cartera'),
-              onTap: () => _navigateToPage(2), // Navega a la página de Cartera
+              title: Text('Ranking'),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      2; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.business_center_sharp),
+              title: Text('Equipos'),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      3; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.business_center_sharp),
+              title: Text('Tabla de posiciones'),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      4; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.business_center_sharp),
+              title: Text('Finanzas'),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      5; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
             ),
           ],
         ),
       ),
-      body: _callPage(currentIndex),
-      backgroundColor: Color.fromARGB(255, 208, 231, 235),
+      body: body, // Usa el body determinado
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 30.0,
         backgroundColor: Colors.black87,
-        currentIndex: currentIndex,
+        currentIndex: bottomNavIndex,
         onTap: (index) {
           setState(() {
-            currentIndex = index; // Cambia el índice actual al que se presionó
+            drawerIndex = -1; // Resetea el índice del Drawer
+            bottomNavIndex = index; // Cambia el índice del BottomNavigationBar
           });
         },
-        selectedItemColor: Color.fromARGB(179, 219, 56, 56),
+        selectedItemColor: Color.fromARGB(255, 97, 94, 184),
         unselectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
@@ -116,21 +183,5 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  Widget _callPage(int actPage) {
-    switch (actPage) {
-      case 0:
-        return EquiposPage();
-      case 1:
-        return MercadoPage();
-      case 2:
-        return CarteraPage();
-      default:
-        return Container(
-          decoration: BoxDecoration(color: Colors.redAccent),
-          child: Center(child: Text('Error page')),
-        );
-    }
   }
 }

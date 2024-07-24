@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:inversor_deportivo/pages/pagesurl.dart';
 
+import '../pages/homePage.dart';
+
 class DrawerComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,58 +81,42 @@ class DrawerComponent extends StatelessWidget {
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 5:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 6:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 7:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: TablaPosicionesPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
       case 7:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomePage(
-            child: FinanzasPage(),
-          ), // Page 2
+          builder: (context) => HomePage(), // Page 2
         ));
         break;
     }
