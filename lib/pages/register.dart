@@ -19,7 +19,7 @@ class RegisterPage extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                TitleComponent(),
+                //TitleComponent(),
                 Gap(20),
                 registerInputsComponents(),
                 Gap(20),

@@ -13,15 +13,50 @@ class CarteraPage extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Cartera',
-              style: TextStyle(
-                fontSize: 40.0,
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Cartera',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
+                ),
               ),
+              Icon(
+                Icons.business_center_sharp,
+                size: 40.0,
+              ),
+            ],
+          ),
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+                color: Colors.black87,
+                borderRadius: BorderRadius.circular(10.0)),
+            child: Row(
+              children: [
+                Gap(80),
+                Text('Equipo',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255))),
+                Gap(40),
+                Text('Acciones',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255))),
+                Gap(45),
+                Text('PC',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255))),
+                Gap(60),
+                Text('VA',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255))),
+              ],
             ),
           ),
+          Gap(10),
           FichaEquipo(),
           Gap(10),
           FichaEquipo()
@@ -37,7 +72,7 @@ class FichaEquipo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 135,
+      height: 100,
       padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -47,7 +82,7 @@ class FichaEquipo extends StatelessWidget {
               offset: const Offset(10, 20),
               blurRadius: 10,
               spreadRadius: 0,
-              color: Colors.grey.withOpacity(.05)),
+              color: Color.fromARGB(255, 177, 177, 177).withOpacity(.05)),
         ],
       ),
       child: Row(
@@ -57,7 +92,14 @@ class FichaEquipo extends StatelessWidget {
             backgroundColor: Color.fromARGB(179, 219, 56, 56),
             maxRadius: 30.0,
           ),
-          DataTableExample(),
+          Gap(20),
+          Text('Name'),
+          Gap(60),
+          Text('135'),
+          Gap(60),
+          Text('234'),
+          Gap(60),
+          Text('400')
         ],
       ),
     );

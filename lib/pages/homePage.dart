@@ -48,12 +48,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = TextStyle(color: Color.fromARGB(255, 255, 255, 255));
+
     // Decide qué mostrar como body
     Widget body = drawerIndex == -1
         ? _getBottomNavPage(bottomNavIndex)
         : _getDrawerPage(drawerIndex);
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 208, 231, 235),
       appBar: AppBar(
         backgroundColor: Colors.black87,
         actions: [
@@ -71,23 +74,26 @@ class _HomePageState extends State<HomePage> {
       ),
 
       drawer: Drawer(
+        backgroundColor: Colors.black87,
         child: ListView(
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black87,
-              ),
+            CircleAvatar(
               child: Text(
-                'Menú',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+                'ID',
+                style: TextStyle(color: Colors.black87),
               ),
+              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              maxRadius: 50.0,
             ),
             ListTile(
-              leading: Icon(Icons.group),
-              title: Text('Cartera'),
+              leading: Icon(
+                Icons.group,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Cartera',
+                style: textStyle,
+              ),
               onTap: () {
                 setState(() {
                   drawerIndex =
@@ -97,8 +103,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart_rounded),
-              title: Text('Mercado'),
+              leading: Icon(
+                Icons.shopping_cart_rounded,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Mercado',
+                style: textStyle,
+              ),
               onTap: () {
                 setState(() {
                   drawerIndex =
@@ -108,19 +120,30 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.business_center_sharp),
-              title: Text('Ranking'),
+              leading: Icon(
+                Icons.business_center_sharp,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Ranking',
+                style: textStyle,
+              ),
               onTap: () {
-                setState(() {
-                  drawerIndex =
-                      2; // Cambia al índice correspondiente del Drawer
-                });
-                Navigator.pop(context); // Cierra el Drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RankingPage()),
+                );
               },
             ),
             ListTile(
-              leading: Icon(Icons.business_center_sharp),
-              title: Text('Equipos'),
+              leading: Icon(
+                Icons.business_center_sharp,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Equipos',
+                style: textStyle,
+              ),
               onTap: () {
                 setState(() {
                   drawerIndex =
@@ -130,8 +153,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.business_center_sharp),
-              title: Text('Tabla de posiciones'),
+              leading: Icon(
+                Icons.business_center_sharp,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Tabla de posiciones',
+                style: textStyle,
+              ),
               onTap: () {
                 setState(() {
                   drawerIndex =
@@ -141,8 +170,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.business_center_sharp),
-              title: Text('Finanzas'),
+              leading: Icon(
+                Icons.business_center_sharp,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Finanzas',
+                style: textStyle,
+              ),
               onTap: () {
                 setState(() {
                   drawerIndex =
@@ -165,7 +200,7 @@ class _HomePageState extends State<HomePage> {
             bottomNavIndex = index; // Cambia el índice del BottomNavigationBar
           });
         },
-        selectedItemColor: Color.fromARGB(255, 97, 94, 184),
+        selectedItemColor: Color(0xff4338CA),
         unselectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
