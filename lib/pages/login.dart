@@ -76,8 +76,8 @@ class LoginComponent extends StatelessWidget {
                 border: OutlineInputBorder(
                   gapPadding: 20.0,
                 ),
-                hintText: 'Usuario',
-                label: Text("Usuario"),
+                hintText: 'Mail',
+                label: Text("Mail"),
               ),
             ),
           ),

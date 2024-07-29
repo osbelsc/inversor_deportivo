@@ -38,8 +38,10 @@ class _HomePageState extends State<HomePage> {
       case 3:
         return EquiposPage();
       case 4:
-        return TablaPosicionesPage();
+        return FixturePage();
       case 5:
+        return TablaPosicionesPage();
+      case 6:
         return FinanzasPage(); // Ejemplo de página
       default:
         return Container();
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         : _getDrawerPage(drawerIndex);
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 208, 231, 235),
+      backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
         backgroundColor: Colors.black87,
         actions: [
@@ -158,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white70,
               ),
               title: Text(
-                'Tabla de posiciones',
+                'Fixture',
                 style: textStyle,
               ),
               onTap: () {
@@ -175,13 +177,30 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white70,
               ),
               title: Text(
-                'Finanzas',
+                'Tabla de posiciones',
                 style: textStyle,
               ),
               onTap: () {
                 setState(() {
                   drawerIndex =
                       5; // Cambia al índice correspondiente del Drawer
+                });
+                Navigator.pop(context); // Cierra el Drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.business_center_sharp,
+                color: Colors.white70,
+              ),
+              title: Text(
+                'Finanzas',
+                style: textStyle,
+              ),
+              onTap: () {
+                setState(() {
+                  drawerIndex =
+                      6; // Cambia al índice correspondiente del Drawer
                 });
                 Navigator.pop(context); // Cierra el Drawer
               },

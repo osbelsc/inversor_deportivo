@@ -20,5 +20,12 @@ class InversorProvider extends ChangeNotifier {
     final response = await http.get(url);
     return response.body;
   }
+
+  String get name => _language;
+
+  set name(String newlanguage) {
+    _language = newlanguage;
+    notifyListeners();
+  }
   //metodos de peticiones
 }

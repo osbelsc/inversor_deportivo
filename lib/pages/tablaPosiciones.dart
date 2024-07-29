@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:inversor_deportivo/providers/Inversor_provider.dart';
+import 'package:provider/provider.dart';
 
 class TablaPosicionesPage extends StatelessWidget {
   const TablaPosicionesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final inversorP = Provider.of<InversorProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListView(
@@ -56,7 +59,11 @@ class TablaPosicionesPage extends StatelessWidget {
           Gap(10),
           DataEquipo(),
           Gap(10),
-          DataEquipo()
+          DataEquipo(),
+          Gap(10),
+          DataEquipo(),
+          Gap(10),
+          DataEquipo(),
         ],
       ),
     );
