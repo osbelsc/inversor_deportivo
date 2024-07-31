@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'pagesurl.dart';
@@ -60,8 +61,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
-        
-
         backgroundColor: const Color.fromARGB(221, 215, 215, 215),
         actions: [
           IconButton(
@@ -210,31 +209,44 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: body, // Usa el body determinado
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 30.0,
-        backgroundColor: Colors.black87,
-        currentIndex: bottomNavIndex,
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.black87,
+        backgroundColor: Color.fromARGB(255, 211, 222, 223),
+        index: bottomNavIndex,
         onTap: (index) {
           setState(() {
             drawerIndex = -1; // Resetea el índice del Drawer
             bottomNavIndex = index; // Cambia el índice del BottomNavigationBar
           });
         },
-        selectedItemColor: Color(0xff4338CA),
-        unselectedItemColor: Colors.white,
         items: [
-          BottomNavigationBarItem(
-            label: 'Equipo',
-            icon: Icon(Icons.group),
+          Icon(
+            Icons.group,
+            size: 30,
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
-          BottomNavigationBarItem(
-            label: 'Mercado',
-            icon: Icon(Icons.shopping_cart_rounded),
+          Icon(
+            Icons.shopping_cart_rounded,
+            size: 30,
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
-          BottomNavigationBarItem(
-            label: 'Cartera',
-            icon: Icon(Icons.business_center_sharp),
-          ),
+          Icon(
+            Icons.business_center_sharp,
+            size: 30,
+            color: const Color.fromARGB(255, 255, 255, 255),
+          )
+          // BottomNavigationBarItem(
+          //   label: 'Equipo',
+          //   icon: Icon(Icons.group),
+          // ),
+          // BottomNavigationBarItem(
+          //   label: 'Mercado',
+          //   icon: Icon(Icons.shopping_cart_rounded),
+          // ),
+          // BottomNavigationBarItem(
+          //   label: 'Cartera',
+          //   icon: Icon(Icons.business_center_sharp),
+          // ),
         ],
       ),
     );

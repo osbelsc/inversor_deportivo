@@ -18,6 +18,7 @@ class EquipoPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.black87,
         title: Text(
           'Equipo',
