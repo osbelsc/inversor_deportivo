@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:inversor_deportivo/components/snacksBar.dart';
+import 'package:inversor_deportivo/providers/usuario_provider.dart';
 
-import '../components/button.dart';
-import 'pagesurl.dart';
+import '../../components/button.dart';
+import '../pagesurl.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -57,7 +59,13 @@ class TitleComponent extends StatelessWidget {
 }
 
 class LoginComponent extends StatelessWidget {
-  const LoginComponent({super.key});
+  final usuarioProvider = UsuarioProvider();
+
+  // Controladores para los campos de texto
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  LoginComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,12 +80,13 @@ class LoginComponent extends StatelessWidget {
           Container(
             width: 350, // Aquí puedes definir el ancho deseado
             child: TextField(
+              controller: emailController, // Asignar el controlador aquí
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   gapPadding: 20.0,
                 ),
-                hintText: 'Mail',
-                label: Text("Mail"),
+                hintText: 'User / Mail',
+                label: Text("User / Mail"),
               ),
             ),
           ),
@@ -85,6 +94,7 @@ class LoginComponent extends StatelessWidget {
           Container(
             width: 350, // Aquí puedes definir el ancho deseado
             child: TextField(
+              controller: passwordController, // Asignar el controlador aquí
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -98,14 +108,27 @@ class LoginComponent extends StatelessWidget {
           ),
           Gap(10),
           GradientButton(
-            text: 'Ingresar',
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      HomePage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-            ),
-          )
+              text: 'Ingresar',
+              onPressed: () async {
+                // Obtener los valores de los controladores
+                String email = emailController.text;
+                String password = passwordController.text;
+
+                // Llamar a la función de login con los valores obtenidos
+                Map info = await usuarioProvider.Login(email, password);
+
+                if (info['ok']) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            HomePage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+                  );
+                  openSuccesSnackBar(context, 'Succes', Icon(Icons.house));
+                } else {
+                  openErrorSnackBar(context, "This is an error message!");
+                }
+              }),
         ],
       ),
     );

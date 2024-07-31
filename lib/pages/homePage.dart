@@ -60,7 +60,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        
+
+        backgroundColor: const Color.fromARGB(221, 215, 215, 215),
         actions: [
           IconButton(
             onPressed: () => Navigator.push(
@@ -71,8 +73,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
         centerTitle: true,
-        title: Text('Inversor deportivo',
-            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        title: Text('Inversor deportivo', style: TextStyle()),
       ),
 
       drawer: Drawer(

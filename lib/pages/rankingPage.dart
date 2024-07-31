@@ -11,6 +11,7 @@ class RankingPage extends StatelessWidget {
     final fonsize30 = TextStyle(fontSize: 30);
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
         backgroundColor: Colors.black87,
         title: Text(
@@ -22,25 +23,38 @@ class RankingPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            ListTile(
-              leading: Icon(Icons.podcasts_outlined),
-              title: Text('Tu Posicion'),
-              trailing: Text('10'),
-            ),
-            ListTile(
-              leading: Icon(Icons.business_center_sharp),
-              title: Text('Valor cartera'),
-              trailing: Text('\$100'),
-            ),
-            ListTile(
-              leading: Icon(Icons.money),
-              title: Text('Efectivo'),
-              trailing: Text('\$100'),
-            ),
-            ListTile(
-              leading: Icon(Icons.more),
-              title: Text('Total'),
-              trailing: Text('\$100'),
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0, left: 15.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Icon(Icons.podcasts_outlined),
+                      title: Text('Tu Posicion'),
+                      trailing: Text('10'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.business_center_sharp),
+                      title: Text('Valor cartera'),
+                      trailing: Text('\$100'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.money),
+                      title: Text('Efectivo'),
+                      trailing: Text('\$100'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.more),
+                      title: Text('Total'),
+                      trailing: Text('\$100'),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Gap(20),
             Padding(

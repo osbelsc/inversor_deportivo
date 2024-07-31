@@ -16,7 +16,7 @@ class EquipoPage extends StatelessWidget {
       _SalesData('May', 80)
     ];
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 208, 231, 235),
+      backgroundColor: Color.fromARGB(255, 211, 222, 223),
       appBar: AppBar(
         backgroundColor: Colors.black87,
         title: Text(
@@ -85,6 +85,14 @@ class TeamBuy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 187, 233, 176), // Color inicial
+            Color.fromARGB(255, 119, 197, 103), // Color final
+          ],
+          begin: Alignment.topLeft, // Comienza en la esquina superior izquierda
+          end: Alignment.bottomRight, // Termina en la esquina inferior derecha
+        ),
         borderRadius: BorderRadius.circular(10.0),
         color: const Color.fromARGB(255, 197, 255, 227),
         border: Border.all(
@@ -116,7 +124,11 @@ class TeamBuy extends StatelessWidget {
                 onPressed: () {
                   // Acción al presionar el botón
                 },
-                child: Text('Comprar'),
+                child: Text(
+                  'Comprar',
+                  style:
+                      TextStyle(color: const Color.fromARGB(255, 43, 175, 112)),
+                ),
               ),
             )
           ],
@@ -133,6 +145,14 @@ class TeamSale extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 223, 156, 156), // Color inicial
+            Color.fromARGB(255, 185, 78, 83), // Color final
+          ],
+          begin: Alignment.topLeft, // Comienza en la esquina superior izquierda
+          end: Alignment.bottomRight, // Termina en la esquina inferior derecha
+        ),
         borderRadius: BorderRadius.circular(10.0),
         color: const Color.fromARGB(255, 255, 184, 184),
         border: Border.all(
@@ -164,7 +184,10 @@ class TeamSale extends StatelessWidget {
                 onPressed: () {
                   // Acción al presionar el botón
                 },
-                child: Text('Vender'),
+                child: Text(
+                  'Vender',
+                  style: TextStyle(color: Colors.redAccent),
+                ),
               ),
             )
           ],

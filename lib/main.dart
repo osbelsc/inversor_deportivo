@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inversor_deportivo/providers/Inversor_provider.dart';
+import 'package:inversor_deportivo/providers/usuario_provider.dart';
 import 'package:inversor_deportivo/routes/routes.dart';
 import 'package:provider/provider.dart';
 import 'pages/pagesurl.dart';
@@ -13,6 +14,10 @@ class Appstate extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => InversorProvider(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UsuarioProvider(),
           lazy: false,
         ),
       ],
@@ -30,9 +35,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(
-            color: const Color.fromARGB(
-                255, 255, 255, 255), // Cambia el color del ícono aquí
-          ),
+              // Cambia el color del ícono aquí
+              ),
         ),
       ),
       title: 'Material App',

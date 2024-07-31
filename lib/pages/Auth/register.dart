@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:inversor_deportivo/providers/usuario_provider.dart';
 
-import '../components/componentsurl.dart';
-import 'pagesurl.dart';
+import '../../components/componentsurl.dart';
+import '../pagesurl.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class RegisterPage extends StatelessWidget {
 }
 
 class registerInputsComponents extends StatelessWidget {
-  const registerInputsComponents({super.key});
+  final usuarioProvider = new UsuarioProvider();
+  registerInputsComponents({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -101,14 +103,16 @@ class registerInputsComponents extends StatelessWidget {
         ),
         Gap(10),
         GradientButton(
-          text: 'Registrarse',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-          ),
-        )
+            text: 'Registrarse',
+            onPressed: () =>
+                {usuarioProvider.Register('osb@email.com', 'sfsdf')}
+            //Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //       builder: (context) =>
+            //           RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+            // ),
+            )
       ],
     );
   }

@@ -14,6 +14,16 @@ class partidoComponent extends StatelessWidget {
           height: 130,
           padding: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 255, 255, 255), // Color inicial
+                Color.fromARGB(255, 207, 206, 207), // Color final
+              ],
+              begin: Alignment
+                  .topLeft, // Comienza en la esquina superior izquierda
+              end: Alignment
+                  .bottomRight, // Termina en la esquina inferior derecha
+            ),
             color: Colors.white,
             borderRadius: BorderRadius.circular(12.5),
             boxShadow: [
