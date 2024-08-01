@@ -17,10 +17,10 @@ class LoginPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(),
         body: SingleChildScrollView(
           child: Column(
             children: [
+              Gap(50),
               TitleComponent(),
               Gap(20),
               LoginComponent(),
@@ -58,14 +58,71 @@ class TitleComponent extends StatelessWidget {
   }
 }
 
-class LoginComponent extends StatelessWidget {
-  final usuarioProvider = UsuarioProvider();
+class LoginComponent extends StatefulWidget {
+  const LoginComponent({super.key});
 
-  // Controladores para los campos de texto
+  @override
+  _LoginComponentState createState() => _LoginComponentState();
+}
+
+class _LoginComponentState extends State<LoginComponent> {
+  final UsuarioProvider usuarioProvider = UsuarioProvider();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  LoginComponent({super.key});
+  String? emailError; // Variable para el error de email
+  String? passwordError; // Variable para el error de password
+  String? usernameError;
+
+  void validateInputs() {
+    final email = emailController.text;
+    final password = passwordController.text;
+    final username = usernameController.text;
+
+    setState(() {
+      emailError = null; // Reiniciar error
+      passwordError = null; // Reiniciar error
+      usernameError = null;
+
+      if (email.isEmpty) {
+        emailError = 'El correo no puede estar vacío';
+      } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+          .hasMatch(email)) {
+        emailError = 'El correo no es válido';
+      }
+
+      if (password.isEmpty) {
+        passwordError = 'La contraseña no puede estar vacía';
+      } else if (password.length < 6) {
+        // Validar longitud mínima
+        passwordError = 'La contraseña debe tener al menos 6 caracteres';
+      }
+      if (username.isEmpty) {
+        usernameError = 'La contraseña no puede estar vacía';
+      }
+    });
+  }
+
+  void handleLogin() async {
+    validateInputs(); // Validar antes de iniciar sesión
+
+    // Solo proceder si no hay errores
+    if (emailError == null && passwordError == null && usernameError == null) {
+      Map info = await usuarioProvider.Login(usernameController.text,
+          emailController.text, passwordController.text);
+
+      if (info['ok']) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+        openSuccesSnackBar(context, 'Success', Icon(Icons.house));
+      } else {
+        openErrorSnackBar(context, "Error: ${info['mensaje']}");
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,57 +135,69 @@ class LoginComponent extends StatelessWidget {
           ),
           Gap(20),
           Container(
-            width: 350, // Aquí puedes definir el ancho deseado
-            child: TextField(
-              controller: emailController, // Asignar el controlador aquí
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  gapPadding: 20.0,
+            width: 350,
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Alinear a la izquierda
+              children: [
+                TextField(
+                  controller: usernameController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Username',
+                    labelText: 'Username',
+                    errorText: emailError, // Mensaje de error
+                  ),
                 ),
-                hintText: 'User / Mail',
-                label: Text("User / Mail"),
-              ),
+                Gap(10), // Espacio adicional entre campos
+              ],
             ),
           ),
           Gap(20),
           Container(
-            width: 350, // Aquí puedes definir el ancho deseado
-            child: TextField(
-              controller: passwordController, // Asignar el controlador aquí
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  gapPadding: 20.0,
+            width: 350,
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Alinear a la izquierda
+              children: [
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Mail',
+                    labelText: 'Mail',
+                    errorText: emailError, // Mensaje de error
+                  ),
                 ),
-                hintText: 'Password',
-                labelText:
-                    'Password', // Si es Flutter 2.0 en lugar de label usarías labelText
-              ),
+                Gap(10), // Espacio adicional entre campos
+              ],
+            ),
+          ),
+          Gap(20),
+          Container(
+            width: 350,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Password',
+                    labelText: 'Password',
+                    errorText: passwordError, // Mensaje de error
+                  ),
+                ),
+                Gap(10), // Espacio adicional entre campos
+              ],
             ),
           ),
           Gap(10),
           GradientButton(
-              text: 'Ingresar',
-              onPressed: () async {
-                // Obtener los valores de los controladores
-                String email = emailController.text;
-                String password = passwordController.text;
-
-                // Llamar a la función de login con los valores obtenidos
-                Map info = await usuarioProvider.Login(email, password);
-
-                if (info['ok']) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            HomePage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-                  );
-                  openSuccesSnackBar(context, 'Succes', Icon(Icons.house));
-                } else {
-                  openErrorSnackBar(context, "This is an error message!");
-                }
-              }),
+            text: 'Ingresar',
+            onPressed: handleLogin, // Manejar la entrada
+          ),
         ],
       ),
     );
@@ -143,7 +212,7 @@ class RegisterComponent extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'No tienes cuenta ?',
+          'No tienes cuenta?',
           style: TextStyle(fontSize: 25.0),
         ),
         GradientButton(
@@ -151,10 +220,10 @@ class RegisterComponent extends StatelessWidget {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+              builder: (context) => RegisterPage(),
+            ),
           ),
-        )
+        ),
       ],
     );
   }

@@ -15,12 +15,20 @@ class RegisterPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(),
         body: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
                 //TitleComponent(),
+                Gap(50),
+                CircleAvatar(
+                  child: Text(
+                    'ID',
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                  backgroundColor: Colors.black87,
+                  maxRadius: 50.0,
+                ),
                 Gap(20),
                 registerInputsComponents(),
                 Gap(20),
@@ -36,6 +44,14 @@ class RegisterPage extends StatelessWidget {
 
 class registerInputsComponents extends StatelessWidget {
   final usuarioProvider = new UsuarioProvider();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController usuarioController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordConfirmController =
+      TextEditingController();
+  final TextEditingController firstController = TextEditingController();
+  final TextEditingController lastController = TextEditingController();
+
   registerInputsComponents({super.key});
 
   @override
@@ -48,8 +64,39 @@ class registerInputsComponents extends StatelessWidget {
         ),
         Gap(20),
         Container(
+          width: 350, // Aquí puedes definir el ancho deseado
+          child: TextField(
+            controller: firstController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                gapPadding: 20.0,
+              ),
+              hintText: 'First Name',
+              labelText: 'First Name',
+              // Si es Flutter 2.0 en lugar de label usarías labelText
+            ),
+          ),
+        ),
+        Gap(20),
+        Container(
+          width: 350, // Aquí puedes definir el ancho deseado
+          child: TextField(
+            controller: lastController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                gapPadding: 20.0,
+              ),
+              hintText: 'Last Name',
+              labelText: 'Last Name',
+              // Si es Flutter 2.0 en lugar de label usarías labelText
+            ),
+          ),
+        ),
+        Gap(20),
+        Container(
           width: 350,
           child: TextField(
+            controller: emailController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 gapPadding: 20.0,
@@ -63,6 +110,7 @@ class registerInputsComponents extends StatelessWidget {
         Container(
           width: 350, // Aquí puedes definir el ancho deseado
           child: TextField(
+            controller: usuarioController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 gapPadding: 20.0,
@@ -77,6 +125,7 @@ class registerInputsComponents extends StatelessWidget {
         Container(
           width: 350, // Aquí puedes definir el ancho deseado
           child: TextField(
+            controller: passwordController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 gapPadding: 20.0,
@@ -91,6 +140,7 @@ class registerInputsComponents extends StatelessWidget {
         Container(
           width: 350, // Aquí puedes definir el ancho deseado
           child: TextField(
+            controller: passwordConfirmController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 gapPadding: 20.0,
@@ -103,18 +153,40 @@ class registerInputsComponents extends StatelessWidget {
         ),
         Gap(10),
         GradientButton(
-            text: 'Registrarse',
-            onPressed: () =>
-                {usuarioProvider.Register('osb@email.com', 'sfsdf')}
-            //Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //       builder: (context) =>
-            //           RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
-            // ),
-            )
+          text: 'Registrarse',
+          onPressed: () => handleRegister(context),
+
+          //Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //       builder: (context) =>
+          //           RegisterPage()), // Reemplaza 'NuevaPagina' con el nombre de tu clase de página a la que deseas dirigir
+          // ),
+        )
       ],
     );
+  }
+
+  void handleRegister(context) async {
+    Map info = await usuarioProvider.Register(
+        usuarioController.text,
+        emailController.text,
+        passwordController.text,
+        passwordConfirmController.text,
+        firstController.text,
+        lastController.text);
+
+    if (info['ok']) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+      //openSuccesSnackBar(context, 'Success', Icon(Icons.house));
+      print('registrado con exito');
+    } else {
+      print('no registrado con exito');
+      //openErrorSnackBar(context, "Error: ${info['mensaje']}");
+    }
   }
 }
 
